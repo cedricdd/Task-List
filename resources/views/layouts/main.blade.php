@@ -41,7 +41,7 @@
             margin-bottom: 25px;
             overflow-wrap: break-word;
         }
-        .card, .card2 {
+        .card {
             background-color: rgb(40, 40, 40);
             border-radius: 10px;
             border: 1px solid rgba(0, 0, 0, 0.1);
@@ -51,12 +51,6 @@
             justify-content: center;
             align-items: center;
             margin: 8px auto;
-        }
-        .card:hover, .card2:hover {
-            background-color: #575757;
-        }
-        .card2 {
-            background-color: rgb(63, 63, 63);
         }
     </style>
 

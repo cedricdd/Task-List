@@ -1,14 +1,20 @@
 @extends("layouts.main")
 
-@section("style")
+@push("style")
     <style>
+        .card:nth-child(2n) {
+            background-color: rgb(63, 63, 63);
+        }
+        .card:hover {
+            background-color: #575757;
+        }
     </style>
-@endsection
+@endpush
 
 @section("content")
 
 @forelse ($tasks as $task)
-    <div class="{{ $loop->even ? "card" : "card2" }}">
+    <div class="card">
         <a href="{{ route("tasks.show", ["id" => $task->id]) }}">🔗 {{ $task->title }} -- {{ $loop->iteration . "/" . $loop->count }}</a>
     </div>
 @empty
