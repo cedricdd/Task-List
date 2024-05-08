@@ -50,7 +50,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             margin: 8px auto;
+        }
+        .card-success {
+            background-color: green;
+            text-align: center;
+            font-weight: bold;
         }
     </style>
 
@@ -61,6 +67,12 @@
         <a href="{{ route("tasks.index") }}">Task List</a>
         @yield('navigation')
     </div>
+
+    @session('success')
+    <div class="card card-success">
+        ✅ {{ $value }}
+    </div>
+    @endsession
 
     @isset($title) <div class="title">{{ $title }}</div> @endisset
 
