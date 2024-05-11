@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Models\Task;
+
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
 use Illuminate\View\View;
 
 class TaskController extends Controller
@@ -27,33 +30,14 @@ class TaskController extends Controller
         return view('show', ['task' => $task, "title" => $task->title]);
     }
 
-    public function store(Request $request): RedirectResponse {
-        $data = $request->validate([
-            "title"=> "required|max:255",
-            "description"=> "required",
-            "long_description"=> "",
-        ]);
-
-        $task = new Task();
-        $task->title = $data["title"];
-        $task->description = $data["description"];
-        $task->long_description = $data["long_description"];
-        $task->save();
+    public function store(TaskRequest $request): RedirectResponse {
+        $task = Task::create($request->validated());
 
         return redirect()->route("tasks.show", $task->id)->with("success","The task \"$task->title\" was successfully added!");
     }
 
-    public function update(Request $request, Task $task): RedirectResponse {
-        $data = $request->validate([
-            "title"=> "required|max:255",
-            "description"=> "required",
-            "long_description"=> "",
-        ]);
-
-        $task->title = $data["title"];
-        $task->description = $data["description"];
-        $task->long_description = $data["long_description"];
-        $task->save();
+    public function update(TaskRequest $request, Task $task): RedirectResponse {
+        $task->update($request->validated());
 
         return redirect()->route("tasks.show", $task->id)->with("success","The task \"$task->title\" was successfully edited!");
     }
