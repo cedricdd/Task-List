@@ -62,7 +62,7 @@
             margin: 8px auto;
         }
         .card-success {
-            background-color: green;
+            background-color: green !important;
             text-align: center;
             font-weight: bold;
         }

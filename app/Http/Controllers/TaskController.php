@@ -16,6 +16,12 @@ class TaskController extends Controller
         return view('create', ["title" => "Create a New Task"]);
     }
 
+    public function destroy(Task $task): RedirectResponse {
+        $task->delete();
+
+        return redirect()->route("tasks.index")->with("success","The task \"$task->title\" was successfully deleted!");
+    }
+
     public function edit(Task $task): View {
         return view('edit', ['task' => $task, "title" => $task->title]);
     }

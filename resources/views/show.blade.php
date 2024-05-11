@@ -9,12 +9,25 @@
         .card {
             flex-direction: column;
         }
+
+        .custom-form {
+            display: inline-block;
+        }
+
+        .custom-button {
+            min-width: 180px;
+        }
     </style>
 @endpush
 
 @section("content")
     <div class="center">
         <a href="{{ route("tasks.edit", $task->id) }}" class="custom-button">✏️ Edit Task</a>
+        <form class="custom-form" action="{{ route('tasks.destroy', $task->id) }}" method="POST">
+            @csrf
+            @method("DELETE")
+            <button type="submit" class="custom-button">❌ Delete Task</button>
+        </form>
     </div>
 
     <div class="card">
