@@ -13,9 +13,7 @@ class TaskController extends Controller
         return view('create', ["title" => "Create a New Task"]);
     }
 
-    public function edit(int $id): View {
-        $task = Task::findOrFail($id);
-
+    public function edit(Task $task): View {
         return view('edit', ['task' => $task, "title" => $task->title]);
     }
 
@@ -25,9 +23,7 @@ class TaskController extends Controller
         return view("index", ["title" => "The list of tasks!", "tasks" => $tasks]);
     }
 
-    public function show(int $id): View {
-        $task = Task::findOrFail($id);
-
+    public function show(Task $task): View {
         return view('show', ['task' => $task, "title" => $task->title]);
     }
 
@@ -47,14 +43,13 @@ class TaskController extends Controller
         return redirect()->route("tasks.show", $task->id)->with("success","The task \"$task->title\" was successfully added!");
     }
 
-    public function update(Request $request, int $id): RedirectResponse {
+    public function update(Request $request, Task $task): RedirectResponse {
         $data = $request->validate([
             "title"=> "required|max:255",
             "description"=> "required",
             "long_description"=> "",
         ]);
 
-        $task = Task::findOrFail($id);
         $task->title = $data["title"];
         $task->description = $data["description"];
         $task->long_description = $data["long_description"];

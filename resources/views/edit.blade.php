@@ -46,17 +46,17 @@
         @csrf
         <div class="card">
             <label for="title">Title: </label>
-            <input type="text" name="title" id="name" placeholder="Enter Task Title" value="{{ $task->title }}" />
+            <input type="text" name="title" id="name" placeholder="Enter Task Title" value="{{ old("title", $task->title) }}" />
             @error("title") <p class="error-message">{{ $message }}</p> @enderror
         </div>
         <div class="card">
             <label for="description">Descrition: </label>
-            <textarea name="description" id="description" placeholder="Enter Task Description">{{ $task->description }}</textarea>
+            <textarea name="description" id="description" placeholder="Enter Task Description">{{ old("description", $task->description) }}</textarea>
             @error("description") <p class="error-message">{{ $message }}</p> @enderror
         </div>
         <div class="card">
             <label for="long_description">Long Descrition: </label>
-            <textarea name="long_description" id="long_description" rows="10" placeholder="Enter Task Long Description">{{ $task->long_description }}</textarea>
+            <textarea name="long_description" id="long_description" rows="10" placeholder="Enter Task Long Description">{{ old("long_description", $task->long_description) }}</textarea>
             @error("long_description") <p class="error-message">{{ $message }}</p> @enderror
         </div>
         <div>
