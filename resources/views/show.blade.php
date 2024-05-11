@@ -13,6 +13,10 @@
 @endpush
 
 @section("content")
+    <div class="center">
+        <a href="{{ route("tasks.edit", $task->id) }}" class="custom-button">✏️ Edit Task</a>
+    </div>
+
     <div class="card">
         <p>{{ $task->description }}</p>
         @if(!empty($task->long_description)) 

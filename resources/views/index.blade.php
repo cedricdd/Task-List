@@ -17,6 +17,10 @@
 @section("content")
 
 <div class="container">
+    <div class="center">
+        <a href="{{ route("tasks.create") }}" class="custom-button">➕ Add New Task</a>
+    </div>
+
     @forelse ($tasks as $task)
     <div class="card">
         <a href="{{ route("tasks.show", ["id" => $task->id]) }}">🔗 {{ $task->title }} -- {{ $loop->iteration . "/" . $loop->count }}</a>

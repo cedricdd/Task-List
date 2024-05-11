@@ -15,6 +15,11 @@
             font-family: "Plus_Jakarta_Sans", "Roboto", "Segoe UI", sans-serif;
             box-sizing: border-box;
         }
+
+        .center {
+            text-align: center;
+        }
+
         .navigation {
             margin: 15px -8px;
         }
@@ -28,10 +33,12 @@
             background-color: rgb(40, 40, 40);
             border-radius: 0 10px 10px 0;
         }
+
         a {
             color: white;
             text-decoration: none;
         }
+
         .title {
             margin-top: 20px;
             font-size: 50px;
@@ -41,6 +48,7 @@
             margin-bottom: 25px;
             overflow-wrap: break-word;
         }
+
         .card {
             background-color: rgb(40, 40, 40);
             border-radius: 10px;
@@ -57,6 +65,38 @@
             background-color: green;
             text-align: center;
             font-weight: bold;
+        }
+
+        .custom-button {
+            --c:  #292b2f; /* the color*/
+        
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            display: inline-block;
+            font-size: 20px;
+            box-shadow: 0 0 0 .15em inset var(--c); 
+            --_g: linear-gradient(var(--c) 0 0) no-repeat;
+            background: 
+                var(--_g) calc(var(--_p,0%) - 100%) 0%,
+                var(--_g) calc(200% - var(--_p,0%)) 0%,
+                var(--_g) calc(var(--_p,0%) - 100%) 100%,
+                var(--_g) calc(200% - var(--_p,0%)) 100%;
+            background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+            outline-offset: .1em;
+            transition: background-size .25s, background-position 0s .25s;
+            border: none;
+            border-radius: 6px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .custom-button:hover {
+            --_p: 100%;
+            transition: background-position .5s, background-size 0s;
+        }
+        .custom-button:active {
+            box-shadow: 0 0 9e9q inset #0009; 
+            background-color: var(--c);
         }
     </style>
 
