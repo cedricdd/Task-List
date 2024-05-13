@@ -27,9 +27,10 @@ class TaskController extends Controller
     }
 
     public function index(): View {
-        $tasks = Task::latest()->where("completed", false)->get();
+        $tasks = Task::latest()->where("completed", false)->simplePaginate(10);
+        $total = Task::where("completed", false)->count();
         
-        return view("index", ["title" => "The list of tasks!", "tasks" => $tasks]);
+        return view("index", ["title" => "The list of tasks!", "tasks" => $tasks, "total" => $total]);
     }
 
     public function show(Task $task): View {
