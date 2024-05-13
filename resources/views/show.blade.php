@@ -23,6 +23,11 @@
 @section("content")
     <div class="center">
         <a href="{{ route("tasks.edit", $task->id) }}" class="custom-button">✏️ Edit Task</a>
+        <form class="custom-form" action="{{ route('tasks.toggle', $task->id) }}" method="POST">
+            @csrf
+            @method("PUT")
+            <button type="submit" class="custom-button">🔄 {{ $task->completed ? "Mark As Unfinished" : "Mark As Completed" }}</button>
+        </form>
         <form class="custom-form" action="{{ route('tasks.destroy', $task->id) }}" method="POST">
             @csrf
             @method("DELETE")

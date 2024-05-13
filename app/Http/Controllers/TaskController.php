@@ -43,6 +43,13 @@ class TaskController extends Controller
         return redirect()->route("tasks.show", $task->id)->with("success","The task \"$task->title\" was successfully added!");
     }
 
+    public function toggle(Task $task): RedirectResponse {
+        $task->completed ^= 1;
+        $task->save();
+
+        return redirect()->route("tasks.show", $task->id)->with("success","The task \"$task->title\" was successfully updated!");
+    }
+
     public function update(TaskRequest $request, Task $task): RedirectResponse {
         $task->update($request->validated());
 
