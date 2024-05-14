@@ -8,6 +8,8 @@
     @else <title>Task List</title>
     @endisset
 
+    <script src="//unpkg.com/alpinejs" defer></script>
+
     <style>
         html, body {
             background-color: #121212;
@@ -62,10 +64,19 @@
             flex-direction: column;
             margin: 8px auto;
         }
+
         .card-success {
             background-color: green !important;
             text-align: center;
             font-weight: bold;
+            position: relative;
+        }
+        .card-success .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            cursor: pointer;
         }
 
         .custom-button {
@@ -110,8 +121,9 @@
     </div>
 
     @session('success')
-    <div class="card card-success">
+    <div class="card card-success" x-data="{ flash: true}" x-show="flash">
         ✅ {{ $value }}
+        <div class="close" @click="flash = false">❌</div>
     </div>
     @endsession
 

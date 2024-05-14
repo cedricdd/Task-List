@@ -11,6 +11,9 @@
         .container {
             padding-bottom: 50px;
         }
+        .completed {
+            text-decoration: line-through;
+        }
     </style>
 @endpush
 
@@ -22,7 +25,7 @@
     </div>
 
     @forelse ($tasks as $task)
-    <div class="card">
+    <div @class(["card", "completed" => $task->completed])>
         <a href="{{ route("tasks.show", $task->id) }}">🔗 {{ $task->title }} -- {{ (($tasks->currentPage() - 1) * 10 + $loop->iteration) . "/" . $total }}</a>
     </div>
     @empty

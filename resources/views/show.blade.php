@@ -41,7 +41,6 @@
             <p>{{ $task->long_description }}</p>
         @endif
 
-        <p>{{ $task->created_at }}</p>
-        <p>{{ $task->updated_at }}</p>
+        <p>Created: {{ $task->created_at->diffForHumans() }} * Updated {{ $task->updated_at->diffForHumans() }}</p>
     </div>
 @endsection
